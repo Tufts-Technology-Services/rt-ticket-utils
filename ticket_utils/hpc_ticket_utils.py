@@ -6,11 +6,11 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 
 def create_parse_header(header_dict):
     header = [f'{k}:{v}' for k, v in header_dict.items()]
-    return f"""
+    return """
     PARSE_START
-    {'\n'.join(header)}
+    {0}
     PARSE_END
-    """
+    """.format('\n'.join(header))
 
 def create_ticket_text(header_dict, message):
     return create_parse_header(header_dict) + message
