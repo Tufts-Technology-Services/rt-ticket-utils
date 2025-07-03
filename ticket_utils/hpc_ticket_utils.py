@@ -12,6 +12,7 @@ def create_parse_header(header_dict):
     PARSE_END
     """.format('\n'.join(header))
 
+
 def create_ticket_text(header_dict, message):
     return create_parse_header(header_dict) + message
 
