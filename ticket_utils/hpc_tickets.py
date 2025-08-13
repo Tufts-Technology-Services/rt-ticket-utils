@@ -114,7 +114,7 @@ def hpcvast_increase_ticket_text(project_path, quota_gb,
     )
     footer = generate_text('footer')
     notifications = generate_text('notifications')
-    t = generate_text('hpc_storage_update', path=project_path, quota=quota_gb,
+    t = generate_text('hpc_storage_update', path=project_path, quota_gb=quota_gb,
                       notifications=notifications, footer=footer)
     return ticket_header + t
 
