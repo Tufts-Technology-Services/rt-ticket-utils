@@ -22,7 +22,6 @@ class Ticket(BaseModel):
     state: str = 'Resolved'
     close_code: str = 'Resolved Remotely'
     close_notes: str
-    message: str
 
 
 """
