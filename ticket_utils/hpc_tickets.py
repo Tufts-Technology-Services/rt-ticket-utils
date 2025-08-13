@@ -2,8 +2,9 @@ from ticket_utils.utils import create_ticket_header, generate_text
 
 
 def hpc_account_creation_ticket_text(project_path, user_path,
-                                     contact, affected_client, watcher,
-                                     assigned_to, parent_ticket_id=None):
+                                     contact, affected_client, assigned_to,
+                                     watcher=None,
+                                     parent_ticket_id=None):
     """
     Create ticket text for HPC account creation.
 
@@ -11,8 +12,8 @@ def hpc_account_creation_ticket_text(project_path, user_path,
     :param user_path: The path of the user.
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the affected client.
-    :param watcher: A list of UTLNs to be added to the watch list.
     :param assigned_to: The UTLN of the person to whom the ticket is assigned.
+    :param watcher: A list of UTLNs to be added to the watch list.
     :param parent_ticket_id: The ID of the parent ticket, if any.
     :return: A string containing the ticket text.
     """
@@ -33,8 +34,8 @@ def hpc_account_creation_ticket_text(project_path, user_path,
 
 
 def hpc_added_to_group_ticket_text(project_path, user_path, group_name,
-                                   contact, affected_client, watcher,
-                                   assigned_to, parent_ticket_id=None):
+                                   contact, affected_client, assigned_to,
+                                   watcher=None, parent_ticket_id=None):
     """
     Create ticket text for adding a user to a project group and adding private directory.
 
@@ -42,8 +43,8 @@ def hpc_added_to_group_ticket_text(project_path, user_path, group_name,
     :param user_path: The path of the user.
     :param group_name: The name of the group.
     :param contact: The UTLN of the contact person (requestor).
-    :param affected_client: The UTLN of the affected client.
     :param watcher: A list of UTLNs to be added to the watch list.
+    :param affected_client: The UTLN of the affected client.
     :param assigned_to: The UTLN of the person to whom the ticket is assigned.
     :return: A string containing the ticket text.
     """
@@ -62,9 +63,9 @@ def hpc_added_to_group_ticket_text(project_path, user_path, group_name,
     return ticket_header + t
 
 
-def hpcvast_project_ticket_text(project_path: str, quota_gb: str, contact=None,
-                                affected_client=None, watcher=None, assigned_to=None,
-                                parent_ticket_id=None):
+def hpcvast_project_ticket_text(project_path: str, quota_gb: str, contact,
+                                affected_client, assigned_to,
+                                watcher=None, parent_ticket_id=None):
     """
     Create ticket text for creating a new HPC Vast project.
 
@@ -72,8 +73,8 @@ def hpcvast_project_ticket_text(project_path: str, quota_gb: str, contact=None,
     :param quota_gb: The quota in GB for the project.
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the affected client.
+    :param assigned_to: The UTLN of the person to whom the ticket is assigned.
     :param watcher: A list of UTLNs to be added to the watch list.
-    :param assigned_to: The UTLN of the person to whom the ticket is assigned
     :param parent_ticket_id: The ID of the parent ticket, if any.
     :return: A string containing the ticket text.
     """
@@ -92,16 +93,16 @@ def hpcvast_project_ticket_text(project_path: str, quota_gb: str, contact=None,
 
 
 def hpcvast_increase_ticket_text(project_path, quota_gb,
-                                 contact=None, affected_client=None, watcher=None,
-                                 assigned_to=None, parent_ticket_id=None):
+                                 contact, affected_client, assigned_to, 
+                                 watcher=None, parent_ticket_id=None):
     """ Create ticket text for increasing the quota of an existing HPC Vast project.
 
     :param project_path: The path of the project.
     :param quota_gb: The new quota in GB for the project.
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the affected client.
-    :param watcher: A list of UTLNs to be added to the watch list.
     :param assigned_to: The UTLN of the person to whom the ticket is assigned.
+    :param watcher: A list of UTLNs to be added to the watch list.
     :param parent_ticket_id: The ID of the parent ticket, if any.
     :return: A string containing the ticket text.
     """
@@ -119,9 +120,9 @@ def hpcvast_increase_ticket_text(project_path, quota_gb,
     return ticket_header + t
 
 
-def rstore_share_ticket_text(share_name, quota_gb, group=None, approvers=(),
-                             contact=None, affected_client=None, watcher=None,
-                             assigned_to=None, parent_ticket_id=None):
+def rstore_share_ticket_text(share_name, quota_gb, group, approvers,
+                             contact, affected_client, assigned_to, 
+                             watcher=None, parent_ticket_id=None):
     """
     Create ticket text for creating a new RStore share.
 
@@ -131,8 +132,8 @@ def rstore_share_ticket_text(share_name, quota_gb, group=None, approvers=(),
     :param approvers: List of approvers for the share.
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the affected client.
+    :param assigned_to: The UTLN of the person to whom the ticket is assigned.
     :param watcher: A list of UTLNs to be added to the watch list.
-    :param assigned_to: The UTLN of the person to whom the ticket is assigned
     :param parent_ticket_id: The ID of the parent ticket, if any.
     :return: A string containing the ticket text.
     """
@@ -153,16 +154,16 @@ def rstore_share_ticket_text(share_name, quota_gb, group=None, approvers=(),
 
 
 def rstore_increase_ticket_text(share_name, quota_gb,
-                                contact=None, affected_client=None, watcher=None,
-                                assigned_to=None, parent_ticket_id=None):
+                                contact, affected_client, assigned_to, 
+                                watcher=None, parent_ticket_id=None):
     """
     Create ticket text for increasing the quota of an existing RStore share.
     :param share_name: The name of the share.
     :param quota_gb: The new quota in GB for the share.
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the affected client.
-    :param watcher: A list of UTLNs to be added to the watch list.
     :param assigned_to: The UTLN of the person to whom the ticket is assigned
+    :param watcher: A list of UTLNs to be added to the watch list.
     :param parent_ticket_id: The ID of the parent ticket, if any.
     :return: A string containing the ticket text.
     """
@@ -181,8 +182,8 @@ def rstore_increase_ticket_text(share_name, quota_gb,
 
 
 def course_directory_ticket_text(course_path: str, quota_gb: str, course_group: str,
-                                 admin_group: str, contact=None, affected_client=None, watcher=None,
-                                 assigned_to=None, parent_ticket_id=None):
+                                 admin_group: str, contact, affected_client, assigned_to, 
+                                 watcher=None, parent_ticket_id=None):
     """
     Create ticket text for creating a new course directory.
 
@@ -192,8 +193,8 @@ def course_directory_ticket_text(course_path: str, quota_gb: str, course_group: 
     :param admin_group: The admin group name for the course.
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the affected client.
-    :param watcher: A list of UTLNs to be added to the watch list.
     :param assigned_to: The UTLN of the person to whom the ticket is assigned.
+    :param watcher: A list of UTLNs to be added to the watch list.
     :param parent_ticket_id: The ID of the parent ticket, if any.
     :return: A string containing the ticket text.
     """
@@ -210,16 +211,16 @@ def course_directory_ticket_text(course_path: str, quota_gb: str, course_group: 
     return ticket_header + t
 
 
-def course_add_ta_ticket_text(course_path: str, contact=None, affected_client=None, watcher=None,
-                              assigned_to=None, parent_ticket_id=None):
+def course_add_ta_ticket_text(course_path: str, contact, affected_client, assigned_to,
+                              watcher=None, parent_ticket_id=None):
     """
     Create ticket text for adding a TA to an existing course.
 
     :param course_path: The path of the course.
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the TA being added.
-    :param watcher: A list of UTLNs to be added to the watch list.
     :param assigned_to: The UTLN of the person to whom the ticket is assigned.
+    :param watcher: A list of UTLNs to be added to the watch list.
     :param parent_ticket_id: The ID of the parent ticket, if any.
     :return: A string containing the ticket text.
     """
@@ -237,16 +238,16 @@ def course_add_ta_ticket_text(course_path: str, contact=None, affected_client=No
     return ticket_header + t
 
 
-def course_add_student_ticket_text(course_path: str, contact=None, affected_client=None,
-                                   watcher=None, assigned_to=None, parent_ticket_id=None):
+def course_add_student_ticket_text(course_path: str, contact, affected_client, assigned_to,
+                                   watcher=None, parent_ticket_id=None):
     """
     Create ticket text for adding a student to an existing course.
 
     :param course_path: The path of the course.
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the student being added.
-    :param watcher: A list of UTLNs to be added to the watch list.
     :param assigned_to: The UTLN of the person to whom the ticket is assigned.
+    :param watcher: A list of UTLNs to be added to the watch list.
     :param parent_ticket_id: The ID of the parent ticket, if any.
     :return: A string containing the ticket text.
     """

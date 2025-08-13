@@ -30,8 +30,8 @@ def generate_text(template, **kwargs):
     return template.render(**kwargs)
 
 
-def create_ticket_header(short_description, close_notes, contact, affected_client, watcher,
-                         assigned_to, parent_ticket_id=None):
+def create_ticket_header(short_description, close_notes, contact, affected_client, 
+                         assigned_to, watcher=None, parent_ticket_id=None):
     """
     Create a ticket object with the provided parameters.
 
@@ -39,17 +39,18 @@ def create_ticket_header(short_description, close_notes, contact, affected_clien
     :param close_notes: Notes to be added when closing the ticket.
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the affected client.
-    :param watcher: A list of UTLNs to be added to the watch list.
     :param assigned_to: The UTLN of the person to whom the ticket is assigned
+    :param watcher: A list of UTLNs to be added to the watch list.
     :param parent_ticket_id: The ID of the parent ticket, if any.
     :return: A Ticket object."""
     ticket = Ticket(
         u_contact_person=contact,
         caller_id=affected_client,
         short_description=short_description,
-        watch_list=watcher,
         assigned_to=assigned_to,
         close_notes=close_notes)
     if parent_ticket_id:
         ticket.parent = parent_ticket_id
+    if watcher:
+        ticket.watch_list = watcher
     return create_parse_header(ticket)
