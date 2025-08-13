@@ -24,16 +24,17 @@ def generate_text(template, **kwargs):
     :param kwargs: Keyword arguments to pass to the template.
     :return: Rendered text from the template.
     """
-    env = Environment(loader=PackageLoader("ticket_utils"), autoescape=select_autoescape())
-    template = env.get_template(f"{ template }.j2")
+    env = Environment(loader=PackageLoader("ticket_utils"),
+                      autoescape=select_autoescape())
+    template = env.get_template(f"{template}.j2")
     return template.render(**kwargs)
 
 
-def create_ticket_header(short_description, close_notes, contact, affected_client, watcher, 
+def create_ticket_header(short_description, close_notes, contact, affected_client, watcher,
                          assigned_to, parent_ticket_id=None):
     """
     Create a ticket object with the provided parameters.
-    
+
     :param short_description: A short description of the ticket.
     :param close_notes: Notes to be added when closing the ticket.
     :param contact: The UTLN of the contact person (requestor).

@@ -1,8 +1,10 @@
-from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional
 
+from pydantic import BaseModel, ConfigDict, Field
 
-class Ticket(BaseModel):    
+
+class Ticket(BaseModel):
+    """Represents a ticket in the system."""    
     model_config = ConfigDict(extra='forbid', str_strip_whitespace=True)
     u_incident_type: str = 'Request'
     u_contact_person: str  # requestor's utln
