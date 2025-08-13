@@ -1,15 +1,15 @@
 Hello,
 
-The new research storage on the Tufts HPC Cluster has been created. Below are the details.
+Your new research storage has been created. Below are the details.
 
-CLUSTER STORAGE INFORMATION
+Tier 1 HPC STORAGE INFORMATION
 =============================================
 Folder Path: {{ path }}
-Quota: {{ quota }}
+Quota: {{ quota_gb }}GB
 
 TIPS & RESOURCES
 
-To avoid running out of storage, please remind members of your team to check the quota by going to ondemand.pax.tufts.edu/pun/sys/shell/ssh/login.pax.tufts.edu and running the command 'df -h {{ path }}' before submitting jobs.
+To avoid running out of storage, please remind members of your team to check the quota by going to ondemand.pax.tufts.edu/pun/sys/shell/ssh/login.pax.tufts.edu and running the command 'df -H {{ path }}' before submitting jobs.
 
 Working outside Tufts network? If yes, you will need to be on Tufts VPN before accessing and utilizing resources on the Tufts HPC Cluster. To download the Tufts VPN software, go to https://access.tufts.edu/vpn.
 
