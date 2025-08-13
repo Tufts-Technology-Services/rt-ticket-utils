@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict
 
 
 class Ticket(BaseModel):
@@ -13,7 +13,7 @@ class Ticket(BaseModel):
     category: str = 'Research'
     subcategory: str = 'Research Systems'
     u_business_service: str = 'High Performance Computing (HPC)'
-    short_description: str = Field(..., alias='Short_Description')
+    short_description: str
     assigned_to: str  # script user's utln
     assignment_group: str = 'TTS Research Technology'
     parent: Optional[str] = None  # parent ticket id
