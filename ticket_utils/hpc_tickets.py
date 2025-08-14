@@ -79,7 +79,7 @@ def hpcvast_project_ticket_text(project_path: str, quota: str, contact,
     :return: A string containing the ticket text.
     """
     ticket_header = create_ticket_header(
-        short_description=f'Tier 1 HPC Storage: Creation | {quota} GB | {project_path}',
+        short_description=f'Tier 1 HPC Storage: Creation | {quota} | {project_path}',
         close_notes='Project storage created!',
         affected_client=affected_client, contact=contact,
         assigned_to=assigned_to, watcher=watcher,
@@ -107,7 +107,7 @@ def hpcvast_increase_ticket_text(project_path, quota,
     :return: A string containing the ticket text.
     """
     ticket_header = create_ticket_header(
-        short_description=f'Tier 1 HPC Storage: Increase | {quota} GB | {project_path}',
+        short_description=f'Tier 1 HPC Storage: Increase | {quota} | {project_path}',
         close_notes='Quota increased!',
         affected_client=affected_client, contact=contact,
         assigned_to=assigned_to, watcher=watcher,
@@ -138,7 +138,7 @@ def rstore_share_ticket_text(share_name, quota, group, approvers,
     :return: A string containing the ticket text.
     """
     ticket_header = create_ticket_header(
-        short_description=f'Tier 1 RStore Storage: Creation | {quota} GB | {share_name}',
+        short_description=f'Tier 1 RStore Storage: Creation | {quota} | {share_name}',
         close_notes='Share created!',
         affected_client=affected_client, contact=contact,
         assigned_to=assigned_to, watcher=watcher,
@@ -168,7 +168,7 @@ def rstore_increase_ticket_text(share_name, quota,
     :return: A string containing the ticket text.
     """
     ticket_header = create_ticket_header(
-        short_description=f'Tier 1 RStore Storage: Increase | {quota} GB | {share_name}',
+        short_description=f'Tier 1 RStore Storage: Increase | {quota} | {share_name}',
         close_notes='Quota increased!',
         affected_client=affected_client, contact=contact,
         assigned_to=assigned_to, watcher=watcher,
@@ -199,7 +199,7 @@ def course_directory_ticket_text(course_path: str, quota: str, course_group: str
     :return: A string containing the ticket text.
     """
     ticket_header = create_ticket_header(
-        short_description=f'HPC Class Storage: Creation | {quota} GB | {course_path}',
+        short_description=f'HPC Class Storage: Creation | {quota} | {course_path}',
         close_notes='Course storage created!',
         affected_client=affected_client, contact=contact,
         assigned_to=assigned_to, watcher=watcher,
