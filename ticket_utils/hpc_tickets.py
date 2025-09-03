@@ -52,7 +52,8 @@ def hpc_added_to_group_ticket_text(project_path, user_path, group_name,
         short_description=f"Tier 1 HPC Storage: Grant Access to {user_path}",
         close_notes='Added user to group!',
         affected_client=affected_client, contact=contact,
-        assigned_to=assigned_to, watcher=watcher,
+        assigned_to=assigned_to, u_business_service='Research Data Storage',
+        watcher=watcher,
         parent_ticket_id=parent_ticket_id
     )
     footer = generate_text('footer')
@@ -82,7 +83,8 @@ def hpcvast_project_ticket_text(project_path: str, quota: str, contact,
         short_description=f'Tier 1 HPC Storage: Creation | {quota} | {project_path}',
         close_notes='Project storage created!',
         affected_client=affected_client, contact=contact,
-        assigned_to=assigned_to, watcher=watcher,
+        assigned_to=assigned_to, u_business_service='Research Data Storage',
+        watcher=watcher,
         parent_ticket_id=parent_ticket_id
     )
     footer = generate_text('footer')
@@ -110,7 +112,8 @@ def hpcvast_increase_ticket_text(project_path, quota,
         short_description=f'Tier 1 HPC Storage: Increase | {quota} | {project_path}',
         close_notes='Quota increased!',
         affected_client=affected_client, contact=contact,
-        assigned_to=assigned_to, watcher=watcher,
+        assigned_to=assigned_to, u_business_service='Research Data Storage',
+        watcher=watcher,
         parent_ticket_id=parent_ticket_id
     )
     footer = generate_text('footer')
@@ -141,7 +144,8 @@ def rstore_share_ticket_text(share_name, quota, group, approvers,
         short_description=f'Tier 1 RStore Storage: Creation | {quota} | {share_name}',
         close_notes='Share created!',
         affected_client=affected_client, contact=contact,
-        assigned_to=assigned_to, watcher=watcher,
+        assigned_to=assigned_to, u_business_service='Research Data Storage',
+        watcher=watcher,
         parent_ticket_id=parent_ticket_id
     )
     footer = generate_text('footer')
@@ -171,7 +175,8 @@ def rstore_increase_ticket_text(share_name, quota,
         short_description=f'Tier 1 RStore Storage: Increase | {quota} | {share_name}',
         close_notes='Quota increased!',
         affected_client=affected_client, contact=contact,
-        assigned_to=assigned_to, watcher=watcher,
+        assigned_to=assigned_to, u_business_service='Research Data Storage',
+        watcher=watcher,
         parent_ticket_id=parent_ticket_id
     )
     footer = generate_text('footer')
@@ -199,10 +204,11 @@ def course_directory_ticket_text(course_path: str, quota: str, course_group: str
     :return: A string containing the ticket text.
     """
     ticket_header = create_ticket_header(
-        short_description=f'HPC Class Storage: Creation | {quota} | {course_path}',
+        short_description=f'Tier 1 HPC Storage: Creation | {quota} | {course_path}',
         close_notes='Course storage created!',
         affected_client=affected_client, contact=contact,
-        assigned_to=assigned_to, watcher=watcher,
+        assigned_to=assigned_to, u_business_service='Research Data Storage',
+        watcher=watcher,
         parent_ticket_id=parent_ticket_id
     )
     footer = generate_text('footer')
@@ -225,15 +231,16 @@ def course_add_ta_ticket_text(course_path: str, contact, affected_client, assign
     :return: A string containing the ticket text.
     """
     ticket_header = create_ticket_header(
-        short_description=f'HPC Class Storage: Add TA | {course_path}',
+        short_description=f'Tier 1 HPC Storage: Add TA to {course_path}',
         close_notes='Course TA added!',
         affected_client=affected_client, contact=contact,
-        assigned_to=assigned_to, watcher=watcher,
+        assigned_to=assigned_to, u_business_service='Research Data Storage',
+        watcher=watcher,
         parent_ticket_id=parent_ticket_id
     )
     footer = generate_text('footer')
     t = generate_text('hpc_course_add_ta', course_dir=course_path,
-                      course_name=course_path.split('/')[-1],
+                      course_name=course_path.split('/')[-1][6:].upper(),
                       ta_username=affected_client, footer=footer)
     return ticket_header + t
 
@@ -252,14 +259,16 @@ def course_add_student_ticket_text(course_path: str, contact, affected_client, a
     :return: A string containing the ticket text.
     """
     ticket_header = create_ticket_header(
-        short_description=f'HPC Class Storage: Add Student | {course_path}',
+        short_description=f'Tier 1 HPC Storage: Add Student to {course_path}',
         close_notes='Course Student added!',
         affected_client=affected_client, contact=contact,
-        assigned_to=assigned_to, watcher=watcher,
+        assigned_to=assigned_to,
+        u_business_service='Research Data Storage',
+        watcher=watcher,
         parent_ticket_id=parent_ticket_id
     )
     footer = generate_text('footer')
     t = generate_text('hpc_course_add_student', course_dir=course_path,
-                      course_name=course_path.split('/')[-1],
+                      course_name=course_path.split('/')[-1][6:].upper(),
                       student_username=affected_client, footer=footer)
     return ticket_header + t
