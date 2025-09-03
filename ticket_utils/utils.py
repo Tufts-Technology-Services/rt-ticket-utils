@@ -10,9 +10,9 @@ def create_parse_header(ticket: Ticket) -> str:
     """
     header = [f'{k}:{v}' for k, v in ticket.model_dump().items()]
     return """
-    PARSE_START
-    {0}
-    PARSE_END
+PARSE_START
+{0}
+PARSE_END
 
     """.format('\n'.join(header))
 
@@ -31,7 +31,8 @@ def generate_text(template, **kwargs):
 
 
 def create_ticket_header(short_description, close_notes, contact, affected_client, 
-                         assigned_to, watcher=None, parent_ticket_id=None):
+                         assigned_to, u_business_service=None, watcher=None, 
+                         parent_ticket_id=None):
     """
     Create a ticket object with the provided parameters.
 
@@ -40,6 +41,7 @@ def create_ticket_header(short_description, close_notes, contact, affected_clien
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the affected client.
     :param assigned_to: The UTLN of the person to whom the ticket is assigned
+    :param u_business_service: The business service related to the ticket
     :param watcher: A list of UTLNs to be added to the watch list.
     :param parent_ticket_id: The ID of the parent ticket, if any.
     :return: A Ticket object."""
@@ -49,6 +51,8 @@ def create_ticket_header(short_description, close_notes, contact, affected_clien
         short_description=short_description,
         assigned_to=assigned_to,
         close_notes=close_notes)
+    if u_business_service:
+        ticket.u_business_service = u_business_service
     if parent_ticket_id:
         ticket.parent = parent_ticket_id
     if watcher:
