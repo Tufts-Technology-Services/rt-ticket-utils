@@ -217,6 +217,34 @@ def course_directory_ticket_text(course_path: str, quota: str, course_group: str
     return ticket_header + t
 
 
+def course_add_instructor_ticket_text(course_path: str, contact, affected_client, assigned_to,
+                              watcher=None, parent_ticket_id=None):
+    """
+    Create ticket text for adding an instructor to an existing course.
+
+    :param course_path: The path of the course.
+    :param contact: The UTLN of the contact person (requestor).
+    :param affected_client: The UTLN of the instructor being added.
+    :param assigned_to: The UTLN of the person to whom the ticket is assigned.
+    :param watcher: A list of UTLNs to be added to the watch list.
+    :param parent_ticket_id: The ID of the parent ticket, if any.
+    :return: A string containing the ticket text.
+    """
+    ticket_header = create_ticket_header(
+        short_description=f'Tier 1 HPC Storage: Add Instructor to {course_path}',
+        close_notes='Course Instructor added!',
+        affected_client=affected_client, contact=contact,
+        assigned_to=assigned_to, u_business_service='Research Data Storage',
+        watcher=watcher,
+        parent_ticket_id=parent_ticket_id
+    )
+    footer = generate_text('footer')
+    t = generate_text('hpc_course_add_instructor', course_dir=course_path,
+                      course_name=course_path.split('/')[-1][6:].upper(),
+                      instructor_username=affected_client, footer=footer)
+    return ticket_header + t
+
+
 def course_add_ta_ticket_text(course_path: str, contact, affected_client, assigned_to,
                               watcher=None, parent_ticket_id=None):
     """
