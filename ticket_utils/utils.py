@@ -14,7 +14,7 @@ PARSE_START
 {0}
 PARSE_END
 
-    """.format('\n'.join(header))
+""".format('\n'.join(header))
 
 
 def generate_text(template, **kwargs):
