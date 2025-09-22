@@ -1,14 +1,13 @@
 from ticket_utils.utils import create_ticket_header, generate_text
 
 
-def hpc_account_creation_ticket_text(project_path, user_path,
+def hpc_account_creation_ticket_text(user_path,
                                      contact, affected_client, assigned_to,
                                      watcher=None,
                                      parent_ticket_id=None):
     """
     Create ticket text for HPC account creation.
 
-    :param project_path: The path of the project.
     :param user_path: The path of the user.
     :param contact: The UTLN of the contact person (requestor).
     :param affected_client: The UTLN of the affected client.
@@ -25,11 +24,9 @@ def hpc_account_creation_ticket_text(project_path, user_path,
         parent_ticket_id=parent_ticket_id
     )
     footer = generate_text('footer')
-    notifications = generate_text('notifications')
-    t = generate_text('hpc_account_creation', user_path=user_path,
-                      project_path=project_path,
-                      pi_utln=affected_client,
-                      notifications=notifications, footer=footer)
+    hpc_welcome_message = generate_text('hpc_welcome')
+    t = generate_text('hpc_account_creation', 
+                      hpc_welcome_message=hpc_welcome_message, footer=footer)
     return ticket_header + t
 
 
