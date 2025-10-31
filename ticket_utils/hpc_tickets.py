@@ -25,7 +25,7 @@ def hpc_account_creation_ticket_text(user_path,
     )
     footer = generate_text('footer')
     hpc_welcome_message = generate_text('hpc_welcome')
-    t = generate_text('hpc_account_creation', 
+    t = generate_text('hpc_account_creation_notification', path=user_path,
                       hpc_welcome_message=hpc_welcome_message, footer=footer)
     return ticket_header + t
 
